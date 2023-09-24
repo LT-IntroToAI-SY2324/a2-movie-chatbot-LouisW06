@@ -63,6 +63,8 @@ for k in [1,2,3,4,5,6]:
     else:
         print(f"{k} is not a multiple of 3.")
 
+   
+
 print("   string".strip())
 
 from typing import List, Any 
@@ -86,4 +88,4 @@ def mult_lists(l1: List[int], l2: List[int]) -> List[int]:
 #x += y
 #x = x + y
 
-assert mult_lists([1,2,3], [2,2,2]) == [2,4,6]
+assert mult_lists([1,2,3], [3,2,1]) == [3,4,3]
