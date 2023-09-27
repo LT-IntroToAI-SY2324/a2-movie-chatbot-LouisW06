@@ -34,16 +34,23 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         sword = source[sind]
         if pword == "%":
             if pind >= len(pattern) - 1:
+                #no more pattern copy the rest of source
                 while sind < len(source) - 1:
                     result += sword
                     sind += 1
                     sword = source[sind]
+                result += sword
+                result = [' '.join(result)]
+                print("Q3EWDR ERGTFRG")
+                return result
             else:
                 pword2 = pattern[pind + 1]
+                matchWord = ""
                 while pword2 != sword:
-                    result += sword
+                    matchWord += sword
                     sind += 1
                     sword = source[sind]
+                result += matchWord
                 #print(f"pword2 = {pword2}, sword = {sword}, pword={pword}, sind={sind}")
         elif pword == "_":
             sind += 1
@@ -51,34 +58,18 @@ def match(pattern: List[str], source: List[str]) -> List[str]:
         else:
             if pword == sword:
                 sind += 1
+                #ignore words that are not matching with % or _
                 print(pword)
             else:
+                print("boogey man")
                 return None
         print(sind)
-        # if len(pattern) > len(source):
-        #     return None
-        # elif len(pattern) < len(source):
-        #     return None
+
     if sind < len(source):
+        print(f"Alfonzo {result}")
         return None
 
-        # 1) if we reached the end of the pattern but not source
-
-        # 2) if the current thing in the pattern is a %
-        # WARNING: this condition contains the bulk of the code for the assignment
-        # If you get stuck on this one, we encourage you to attempt the other conditions
-        #   and come back to this one afterwards
-
-        # 3) if we reached the end of the source but not the pattern
-
-        # 4) if the current thing in the pattern is an _
-
-        # 5) if the current thing in the pattern is the same as the current thing in the
-        # source
-
-        # 6) else : this will happen if none of the other conditions are met it
-        # indicates the current thing it pattern doesn't match the current thing in
-        # source
+    
     print(f"result is {result}")
     return result
 
@@ -98,12 +89,7 @@ if __name__ == "__main__":
     assert match(["x", "%", "y", "z"], ["x", "y", "z"]) == [""], "test 11 failed"
     assert match(["x", "y", "z", "%"], ["x", "y", "z"]) == [""], "test 12 failed"
     assert match(["_", "%"], ["x", "y", "z"]) == ["x", "y z"], "test 13 failed"
-    assert match(["_", "_", "_", "%"], ["x", "y", "z"]) == [
-        "x",
-        "y",
-        "z",
-        "",
-    ], "test 14 failed"
+    assert match(["_", "_", "_", "%"], ["x", "y", "z"]) == ["x","y","z","",], "test 14 failed"
     # this last case is a strange one, but it exposes an issue with the way we've
     # written our match function
     assert match(["x", "%", "z"], ["x", "y", "z", "z", "z"]) == None, "test 15 failed"

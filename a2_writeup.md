@@ -13,8 +13,8 @@ This assignment is about learning and applying the while loop and iterating thro
 ## Reflection Questions
 1. What was difficult for you while completing the match function?
 
-
+It was difficult to get the % working correctly because it took multiple values from the source and turned them into one string, and it also had to be able to detect multiple values and know when the source matched the pattern again. Overall, the hardest part.
 
 2. Explain how you could use the match function for extracting information from a movie database.
 
-
+You could use the match function for extracting information from a movie database because the match function can read a user's question like "What movies came out in the year 1979" and match it to the pattern "What movies came out in the year _", then finding 1979 as its value and searching a movie database using that value.
